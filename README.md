@@ -66,13 +66,13 @@ Not lucky response: 2:98:-1
 Not lucky response: 2:99:-1
 ```
 
-You can see in the main class that I am grabbing the `luckNumberMessageId`  
+You can see in the main class that I am grabbing the `luckyNumberMessageId`  
 after pushing it to the Pulsar topic.
 ```java
 if (i == luckyNumber) {
     bytes = "lucky-five".getBytes();
-    luckNumberMessageId = producer.send(bytes);
-    System.out.println("Lucky number 5 Message Id is: " + luckNumberMessageId);
+    luckyNumberMessageId = producer.send(bytes);
+    System.out.println("Lucky number 5 Message Id is: " + luckyNumberMessageId);
 
 }
 ``` 
@@ -80,7 +80,7 @@ if (i == luckyNumber) {
 I am then printing a special message once I pull the correct message off of the pulsar topic.
 
 ```java
-if (luckNumberMessageId !=  null && msg.getMessageId().equals(luckNumberMessageId)) {
+if (luckyNumberMessageId !=  null && msg.getMessageId().equals(luckyNumberMessageId)) {
     System.out.printf("Lucky number 5 id %s, message %s: \n", msg.getMessageId(), response);
     consumer.acknowledge(msg);
 }

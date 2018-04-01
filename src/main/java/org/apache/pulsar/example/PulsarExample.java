@@ -17,12 +17,12 @@ public class PulsarExample {
 
         byte[] bytes;
         final int luckyNumber = 5;
-        MessageId luckNumberMessageId = null;
+        MessageId lucykNumberMessageId = null;
         for (int i = 0; i < 10; i++) {
             if (i == luckyNumber) {
                 bytes = "lucky-five".getBytes();
-                luckNumberMessageId = producer.send(bytes);
-                System.out.println("Lucky number 5 Message Id is: " + luckNumberMessageId);
+                lucykNumberMessageId = producer.send(bytes);
+                System.out.println("Lucky number 5 Message Id is: " + lucykNumberMessageId);
 
             } else {
                 bytes = "my-message".getBytes();
@@ -47,7 +47,7 @@ public class PulsarExample {
 
 
             // Acknowledge the message so that it can be deleted by broker
-            if (luckNumberMessageId !=  null && msg.getMessageId().equals(luckNumberMessageId)) {
+            if (lucykNumberMessageId !=  null && msg.getMessageId().equals(lucykNumberMessageId)) {
                 System.out.printf("Lucky number 5 id %s, message %s: \n", msg.getMessageId(), response);
                 consumer.acknowledge(msg);
             } else {
